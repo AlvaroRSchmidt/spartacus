@@ -10,7 +10,6 @@ void setup() {
   pinMode(ledPin, OUTPUT);
 }
 
-
 void loop() {
   currentMillis = millis();
   if(currentMillis - previousMillis >= updateTime){
