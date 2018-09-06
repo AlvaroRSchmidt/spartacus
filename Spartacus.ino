@@ -1,4 +1,5 @@
 #include <SoftwareSerial.h>
+#include <ArduinoJson.h>
 #include "SpartacusUtils.h"
 
 #define rxPin 2
@@ -24,7 +25,7 @@ void loop() {
   }
 
   if(moduloBT.available()) {
-    char receivedChar = moduloBT.read();
-    Serial.println(receivedChar);
+    String received = moduloBT.readString();
+    Serial.println(received);
   }
 }
