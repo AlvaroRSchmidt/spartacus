@@ -1,14 +1,18 @@
 #include <SoftwareSerial.h>
 #include "SpartacusUtils.h"
 
+#define rxPin 2
+#define txPin 2
 #define ledPin 8
 #define updateTime 500
 
+SoftwareSerial moduloBT(rxPin, txPin);
 float previousMillis, currentMillis; 
 
 void setup() {
   pinMode(ledPin, OUTPUT);
   Serial.begin(9600);
+  moduloBT.begin(9600);
 }
 
 void loop() {
@@ -17,5 +21,10 @@ void loop() {
     previousMillis = currentMillis;
 
     togglePin(ledPin);
+  }
+
+  if(moduloBT.available()) {
+    char receivedChar = moduloBT.read();
+    Serial.println(receivedChar);
   }
 }
